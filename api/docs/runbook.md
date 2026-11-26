@@ -130,14 +130,22 @@ Only auth register and login should be public unless an endpoint is intentionall
 
 ## Deployment
 
-No deployment workflow or target is documented in this repository snapshot. Before deploying:
+The API deploys to Prisma Compute with Prisma Composer. `.github/workflows` runs `prisma/cloud-deploy-action` on every branch push (and tears the stage down when the branch is deleted), building with `pnpm run build` and deploying `module.mjs`.
 
-1. Confirm the target host and database URL.
-2. Set `JWT_SECRET` to a strong private value.
-3. Set `DATABASE_URL` to the deployed PostgreSQL database.
-4. Set `PORT` if the platform does not provide the default automatically.
-5. Apply all approved migrations and verify contract compatibility.
-6. Start the application through the platform process manager.
+| File | Role |
+|---|---|
+| `module.mjs` | Provisions the Postgres database and the API service, and wires them together |
+| `service.mjs` | Declares the service: its `db` dependency, its input schema (`jwtSecret`), and its build output |
+| `data.mjs` | The data-contract value shared by the database and the service |
+| `src/composer-main.mjs` | Deployed entry: maps `service.load()`/`service.input()` onto `DATABASE_URL`, `JWT_SECRET` and `PORT`, then boots `dist/main.js` |
+| `prisma-composer.config.mjs` | Deploy target (Prisma Cloud, `eu-central-1`) and state |
+
+Before deploying:
+
+1. Set the `JWT_SECRET` platform secret for the stage. It is bound with `envSecret("JWT_SECRET")`; the deploy fails if it is missing.
+2. Commit a migration for every contract change (`pnpm contract:emit`, then `pnpm prisma migration plan --name <slug>`). The deploy replays `migrations/` on the provisioned database before the service starts and never creates schema itself.
+
+`DATABASE_URL` and `PORT` are provided by Composer in deployed environments; do not set them by hand. `pnpm start*` does not use `src/composer-main.mjs` and keeps reading `.env`.
 
 Typical local production-style process:
 

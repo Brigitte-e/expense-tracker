@@ -1,10 +1,13 @@
 {
   "7": "AuthGuard (global JWT bearer guard)",
+  "9": "package.json",
+  "11": "accounts.controller.ts",
   "16": "prisma/contract.d.ts",
   "18": "Bank statement parsers (REVOLUT, MONOBANK, PRIVAT)",
   "20": "AppModule",
   "21": "Technical Debt Register",
-  "29": "@nestjs/mau@^0.2.6",
-  "33": "supertest",
+  "29": "eff3b984b6e1cdb7e6cc241ce9014d03fe265420111af14bc75e4d4e5c98f6d2/contract.d.ts",
+  "30": "data.mjs",
+  "32": "@prisma/orm-postgres",
   "34": "graphify skill (/graphify trigger)"
 }

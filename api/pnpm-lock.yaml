@@ -44,6 +44,9 @@ importers:
       alchemy:
         specifier: 2.0.0-beta.74
         version: 2.0.0-beta.74(@effect/platform-bun@4.0.0-rc.112(effect@4.0.0-rc.112))(@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1))(@types/node@24.13.3)(@vercel/nft@1.11.0)(effect@4.0.0-rc.112)(pg@8.23.0)(typescript@6.0.3)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@24.13.3)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.12)(yaml@2.9.0)))(ws@8.21.3)
+      arktype:
+        specifier: 2.2.3
+        version: 2.2.3
       bcryptjs:
         specifier: ^3.0.3
         version: 3.0.3

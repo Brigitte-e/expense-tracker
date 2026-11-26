@@ -4,7 +4,7 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "assets": ["prisma/**/*.json"],
+    "assets": ["prisma/**/*.json", "composer-main.mjs"],
     "watchAssets": true
   }
 }
